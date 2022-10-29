@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/drawable/ic_add_note.xml" value="0.1" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20989583333333334" />
@@ -21,7 +22,10 @@
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/layout_add.xml" value="0.25" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/layout_delete.xml" value="0.7598684210526315" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/layout_url.xml" value="0.25" />
+        <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/list_detail_activity.xml" value="0.19375" />
         <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/list_item_note.xml" value="0.19375" />
+        <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/list_selection_view_holder.xml" value="0.19375" />
+        <entry key="..\:/Users/USER/IdeaProjects/CatatanKecilku/app/src/main/res/layout/main_fragment.xml" value="0.19375" />
       </map>
     </option>
   </component>

@@ -1,45 +1,94 @@
 package com.catatankecilku
 
-import android.content.SharedPreferences
-import android.os.Bundle
-import android.view.View.inflate
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.resources.Compatibility.Api21Impl.inflate
-import androidx.core.content.res.ColorStateListInflaterCompat.inflate
-import androidx.core.content.res.ComplexColorCompat.inflate
-import androidx.core.graphics.drawable.DrawableCompat.inflate
-import androidx.preference.PreferenceManager.*
-import com.catatankecilku.databinding.ActivityMainBinding.inflate
-import com.catatankecilku.databinding.LayoutAddBinding
-import com.catatankecilku.databinding.LayoutAddBinding.inflate
+import android.os.Bundle
+import android.text.InputType
+import android.util.Log
+import android.widget.EditText
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
+import com.catatankecilku.databinding.ActivityMainBinding
+import com.catatankecilku.TaskList
+import com.catatankecilku.ListDetailActivity
+import com.catatankecilku.MainFragment
+import com.catatankecilku.MainViewModel
+import com.catatankecilku.MainViewModelFactory
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionListener {
 
-    private lateinit var binding : LayoutAddBinding
-    private lateinit var viewModel: ListViewModel
-    private val sharedpreferenceFile ="mySharedPref"
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var viewModel: MainViewModel
+
+    private lateinit var activityDetailResultLauncher: ActivityResultLauncher<Intent>
+
+    companion object {
+        const val INTENT_LIST_KEY = "list"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //binding = ListBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel = ViewModelProvider(
+            this,
+            MainViewModelFactory(
+                PreferenceManager.getDefaultSharedPreferences(this)
+            )
+        )
+            .get(MainViewModel::class.java)
 
-        viewModel = (ListViewModel())
-
-        val adapter = ListSelectionRecycleViewAdapter(viewModel.lists)
-
-        viewModel.onListAdded = {
-            adapter.listsUpdate()
-        }.toString()
-
-        binding.tvCreate.setOnClickListener {
-            viewModel.saveList(this)
+        if (savedInstanceState == null) {
+            //attach fragment to fragment container
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_container, MainFragment.newInstance(this))
+                .commitNow()
         }
 
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedpreferenceFile,
-            MODE_PRIVATE
-        )
-        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+        binding.fabButton.setOnClickListener {
+            showCreateListDialog()
+        }
 
+        activityDetailResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if(result.resultCode == RESULT_OK){
+                    result.data.let {
+
+                    }
+                }
+            }
+    }
+
+    private fun showCreateListDialog() {
+        val dialogTitle = getString(R.string.name_of_list)
+        val positiveButtonTitle = getString(R.string.create_list)
+
+        val builder = AlertDialog.Builder(this)
+        val listTitleEditText = EditText(this)
+        listTitleEditText.inputType = InputType.TYPE_CLASS_TEXT
+
+        builder.setTitle(dialogTitle)
+        builder.setView(listTitleEditText)
+        builder.setPositiveButton(positiveButtonTitle) { dialog, _ ->
+            dialog.dismiss()
+            viewModel.saveList(TaskList(listTitleEditText.text.toString()))
+        }
+
+        builder.create().show()
+    }
+
+    override fun listItemTapped(list: TaskList) {
+        showListDetail(list)
+    }
+
+    private fun showListDetail(list: TaskList) {
+        val listDetailIntent = Intent(this, ListDetailActivity::class.java)
+        listDetailIntent.putExtra(INTENT_LIST_KEY, list)
+        Log.d("showListDetail", "showListDetail: " + list.name)
+        activityDetailResultLauncher.launch(listDetailIntent)
     }
 }

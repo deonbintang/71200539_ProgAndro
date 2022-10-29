@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CatatanKecilku</string>
+    <string name="name_of_list">Masukan nama daftar Anda?</string>
+    <string name="create_list">Create</string>
 </resources>
