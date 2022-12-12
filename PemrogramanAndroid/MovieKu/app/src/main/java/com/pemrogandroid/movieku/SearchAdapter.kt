@@ -27,7 +27,7 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchMoviesHolder, position: Int) {
 
         holder.titleTextView.text = movieList[position].title
-        holder.releaseDateTextView.text = movieList[position].getReleaseYearFromDate()
+        holder.releaseDateTextView.text = movieList[position].releaseDate
         holder.overviewTextView.text = movieList[position].overview
 
         if (movieList[position].posterPath != null) {

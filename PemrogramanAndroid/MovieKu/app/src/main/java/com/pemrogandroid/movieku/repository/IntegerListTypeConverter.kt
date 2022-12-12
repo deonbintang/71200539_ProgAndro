@@ -1,4 +1,4 @@
-package com.pemrogandroid.movieku.model
+package com.pemrogandroid.movieku.repository
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

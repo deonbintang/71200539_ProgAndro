@@ -1,4 +1,4 @@
-package com.pemrogandroid.movieku.model
+package com.pemrogandroid.movieku.db
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import androidx.room.Update
 import io.reactivex.Observable
+import com.pemrogandroid.movieku.model.Movie
 
 @Dao
 interface MovieDao {

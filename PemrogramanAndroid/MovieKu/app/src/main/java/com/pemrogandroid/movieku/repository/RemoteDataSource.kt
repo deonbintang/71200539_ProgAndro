@@ -1,5 +1,6 @@
-package com.pemrogandroid.movieku.model
+package com.pemrogandroid.movieku.repository
 
+import com.pemrogandroid.movieku.model.TmdbResponse
 import com.pemrogandroid.movieku.network.RetrofitClient
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

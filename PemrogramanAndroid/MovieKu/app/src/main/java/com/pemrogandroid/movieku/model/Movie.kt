@@ -2,7 +2,10 @@ package com.pemrogandroid.movieku.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.TypeConverters
 
+import com.pemrogandroid.movieku.repository.IntegerListTypeConverter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -53,8 +56,39 @@ data class Movie(
     var releaseDate: String? = null,
     var watched: Boolean = false
 ) {
-
-    fun getReleaseYearFromDate(): String {
-        return releaseDate?.split("-")?.get(0) ?: ""
+    constructor(title: String, releaseDate: String, posterPath: String) : this(){
+        this.title = title
+        this.releaseDate = releaseDate
+        this.posterPath = posterPath
     }
+    constructor(
+        voteCount: Int,
+        video: Boolean,
+        voteAverage: Float,
+        title: String,
+        popularity: Float,
+        posterPath: String,
+        originalTitle: String,
+        originalLanguage: String,
+        genreIds: List<Int>,
+        backdropPath: String,
+        adult: Boolean,
+        releaseDate: String,
+        overview: String,
+    ) :this(){
+        this.voteCount = voteCount
+        this.video = video
+        this.title = title
+        this.voteAverage = voteAverage
+        this.popularity = popularity
+        this.posterPath = posterPath
+        this.originalTitle = originalTitle
+        this.originalLanguage = originalLanguage
+        this.genreIds = genreIds
+        this.adult = adult
+        this.backdropPath = backdropPath
+        this.releaseDate = releaseDate
+        this.overview = overview
+    }
+
 }

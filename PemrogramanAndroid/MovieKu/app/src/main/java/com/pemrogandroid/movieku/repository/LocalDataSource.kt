@@ -1,6 +1,9 @@
-package com.pemrogandroid.movieku.model
+package com.pemrogandroid.movieku.repository
 
 import android.app.Application
+import com.pemrogandroid.movieku.db.LocalDatabase
+import com.pemrogandroid.movieku.db.MovieDao
+import com.pemrogandroid.movieku.model.Movie
 import io.reactivex.Observable
 import kotlin.concurrent.thread
 

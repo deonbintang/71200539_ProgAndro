@@ -16,7 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.pemrogandroid.movieku.model.LocalDataSource
+import com.pemrogandroid.movieku.repository.LocalDataSource
 import com.pemrogandroid.movieku.model.Movie
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

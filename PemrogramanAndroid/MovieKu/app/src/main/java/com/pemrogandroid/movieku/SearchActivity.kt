@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.pemrogandroid.movieku.model.RemoteDataSource
+import com.pemrogandroid.movieku.repository.RemoteDataSource
 import com.pemrogandroid.movieku.model.TmdbResponse
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -133,7 +133,7 @@ class SearchActivity : AppCompatActivity() {
 
             val replyIntent = Intent()
             replyIntent.putExtra(EXTRA_TITLE, movie.title)
-            replyIntent.putExtra(EXTRA_RELEASE_DATE, movie.getReleaseYearFromDate())
+            replyIntent.putExtra(EXTRA_RELEASE_DATE, movie.releaseDate)
             replyIntent.putExtra(EXTRA_POSTER_PATH, movie.posterPath)
             setResult(Activity.RESULT_OK, replyIntent)
 

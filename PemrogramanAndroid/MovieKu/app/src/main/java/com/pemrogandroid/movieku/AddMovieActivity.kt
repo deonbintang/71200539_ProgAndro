@@ -9,9 +9,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.pemrogandroid.movieku.model.LocalDataSource
 import com.pemrogandroid.movieku.model.Movie
 import com.pemrogandroid.movieku.network.RetrofitClient.TMDB_IMAGEURL
+import com.pemrogandroid.movieku.repository.LocalDataSource
 import com.squareup.picasso.Picasso
 
 open class AddMovieActivity : AppCompatActivity() {
