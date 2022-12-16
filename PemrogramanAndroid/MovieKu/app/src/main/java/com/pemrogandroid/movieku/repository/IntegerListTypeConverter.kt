@@ -27,4 +27,5 @@ class IntegerListTypeConverter {
 
         return gson.toJson(someObjects)
     }
+
 }
